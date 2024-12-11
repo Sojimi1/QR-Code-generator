@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR CODE GENERATOR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <img src="" alt="">
+    <input type="text"><br><br>
+    <button id="generate">Generate</button><br><br>
+    <button id="download">Download</button>
+
+    <script>
+        const input = document.querySelector("input");
+        const qrImage = doument.querySelector("img");
+        const generateBtn = doument.querySelector("#generate");
+        const downlaodBtn = document.querySelector + ("#download");
+
+        generateBtn.addEventListener("click", () => {
+            const qrCode = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${input.value}";
+            qrImage.src = qrCode;
+
+        });
+        generateBtn.addEventListener("click", async() => {
+            const response = await fetch(qrImage.src);
+            const blob = await response.blob();
+            const downloadLink = document.createElement("a");
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = "qrcode.jpg"
+            downloadLink.click();
+
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+Your code contains several syntax errors and inconsistencies. Here's a corrected and functional version of your QR code generator HTML: ### Updated Code ```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>QR Code Generator</h1>
+    <img id="qrImage" src="" alt="QR Code" style="display: none;"><br>
+    <input type="text" id="qrInput" placeholder="Enter
